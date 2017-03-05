@@ -11,4 +11,5 @@ RUN pip install -U \
     robotframework \
     selenium==2.53.6 \
     robotframework-selenium2library \
-    robotframework-ftplibrary
+    robotframework-ftplibrary \
+    robotframework-reportportal 
