@@ -39,7 +39,19 @@ ADD http://10.203.54.42:9000/robotresults/mysql-connector-java-5.1.23.jar /opt/t
 
 RUN apk add --no-cache ruby ruby-bundler ruby-dev build-base
 RUN gem install json tiller --no-doc
-ADD http://10.203.54.42:9000/robotresults/data/tiller/common.yaml /etc/tiller
-ADD http://10.203.54.42:9000/robotresults/data/tiller/templates/database.properties.erb /etc/tiller
+#ADD http://10.203.54.42:9000/robotresults/data/tiller/common.yaml /etc/tiller
+#ADD http://10.203.54.42:9000/robotresults/data/tiller/templates/database.properties.erb /etc/tiller
+
+RUN apk add --no-cache ruby ruby-bundler ruby-dev build-base
+RUN gem install json tiller --no-doc
+ADD data/tiller /etc/tiller
+
+#
+# Tiller is the support package that will take environmental variables and inject them
+# into the configuration templates at startup.  It will then run the java commandline
+# to startup the Tropo CDR java executible.
+#
 
 CMD [ "/usr/bin/tiller", "-v","-d"]
+
+

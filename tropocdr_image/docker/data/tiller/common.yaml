@@ -1,0 +1,26 @@
+exec: [ "/run/run_cdr.sh" ]
+data_sources:
+  - file
+  - defaults
+  - environment
+
+template_sources:
+  - file
+
+defaults:
+  global:
+    dbdriver: com.mysql.jdbc.Driver
+    db_tablename: cdr
+    ignore_failure_cdr: true
+    ignore_message_body: true
+
+environment:
+  prefix: ''
+
+environments:
+  development:
+    database.properties.erb:
+      target: /opt/tropo-cdr-production/config/database.properties
+
+
+
