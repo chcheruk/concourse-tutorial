@@ -17,7 +17,8 @@ RUN wget -O /tmp/${LOG4J_BIN} http://apache-mirror.rbc.ru/pub/apache/logging/log
 WORKDIR /opt/
 ENV CDR_VERSION trunk-SNAPSHOT
 
-RUN curl -s http://artifacts.voxeolabs.net/tropo/${CDR_VERSION}/artifacts/cdr/tropo-cdr-${CDR_VERSION}-dist.tar.gz | tar zxv
+#RUN curl -s http://artifacts.voxeolabs.net/tropo/${CDR_VERSION}/artifacts/cdr/tropo-cdr-${CDR_VERSION}-dist.tar.gz | tar zxv
+RUN curl -s http://10.203.54.42:9000/robotresults/tropo-cdr-trunk-20170330.222458-31-dist.tar.gz | tar zxv
 
 RUN mv /opt/tropo-pause /opt/tropo-cdr-production
 ADD http://10.203.54.42:9000/robotresults/run_cdr.sh /run/run_cdr.sh
