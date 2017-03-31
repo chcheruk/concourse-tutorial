@@ -13,10 +13,8 @@ resources:
 - name: resource-image-cdr
   type: git
   source:
-    uri: https://bitbucket.org/voxeolabs/tropo-cdr.git
+    uri: https://github.com/chcheruk/concourse-tutorial.git
     branch: master
-    username: {{bit-username}}
-    password: {{bit-password}}
 
 - name: resource-docker-image-tropocdr
   type: docker-image
