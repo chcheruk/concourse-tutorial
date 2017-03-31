@@ -1,0 +1,27 @@
+---
+jobs:
+- name: job-tropocdr
+  public: true
+  serial: true
+  plan:
+  - get: resource-image-cdr
+  - put: resource-docker-image-tropocdr
+    params:
+      build: resource-image-cdr/tropocdr_image/docker
+
+resources:
+- name: resource-image-cdr
+  type: git
+  source:
+    uri: https://bitbucket.org/voxeolabs/tropo-cdr.git
+    branch: master
+    username: {{bit-username}}
+    password: {{bit-password}}
+
+- name: resource-docker-image-tropocdr
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: {{docker-hub-image-cdr-resource}}
